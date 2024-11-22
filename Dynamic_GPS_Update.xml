@@ -1,0 +1,79 @@
+<TaskerData sr="" dvi="1" tv="5.12.3">
+    <Profile sr="Tasker">
+        <c sr="0" ve="3">
+            <id>1</id>
+            <n>Dynamic GPS Update</n>
+            <t>3</t>
+            <pri>100</pri>
+        </c>
+        <st sr="0" ve="3">
+            <c sr="0" ve="3">
+                <id>2</id>
+                <n>Time</n>
+                <t>0</t>
+                <st sr="0">
+                    <t sr="0" ve="3">
+                        <i>10</i>
+                        <o>0</o>
+                    </t>
+                </st>
+            </c>
+            <c sr="0" ve="3">
+                <id>3</id>
+                <n>Dynamic GPS</n>
+                <t>0</t>
+                <st sr="0">
+                    <a sr="0" ve="3">
+                        <id>4</id>
+                        <n>HTTP Request</n>
+                        <t>net.http.get</t>
+                        <st sr="0">
+                            <p sr="0" ve="3">
+                                <n>Server</n>
+                                <v>http://ip-api.com/json/</v>
+                            </p>
+                            <p sr="0" ve="3">
+                                <n>Variable</n>
+                                <v>%IPINFO</v>
+                            </p>
+                        </st>
+                    </a>
+                    <a sr="0" ve="3">
+                        <id>5</id>
+                        <n>Split Variable</n>
+                        <t>variable.split</t>
+                        <st sr="0">
+                            <p sr="0" ve="3">
+                                <n>Name</n>
+                                <v>%IPINFO</v>
+                            </p>
+                            <p sr="0" ve="3">
+                                <n>Delimiter</n>
+                                <v>,</v>
+                            </p>
+                        </st>
+                    </a>
+                    <a sr="0" ve="3">
+                        <id>6</id>
+                        <n>Send Intent</n>
+                        <t>app.send.intent</t>
+                        <st sr="0">
+                            <p sr="0" ve="3">
+                                <n>Action</n>
+                                <v>android.intent.action.VIEW</v>
+                            </p>
+                            <p sr="0" ve="3">
+                                <n>Data</n>
+                                <v>geo:%LAT,%LON</v>
+                            </p>
+                            <p sr="0" ve="3">
+                                <n>Target</n>
+                                <v>Activity</v>
+                            </p>
+                        </st>
+                    </a>
+                </st>
+            </c>
+        </st>
+    </Profile>
+</TaskerData>
